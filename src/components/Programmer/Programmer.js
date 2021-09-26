@@ -28,10 +28,10 @@ function Programmer(props) {
         </button>
         <div className="container social-icon">
           <div className="fb">
-            <i className="fab fa-facebook-square"></i>
+            <i class="fab fa-facebook-square"></i>
           </div>
           <div className="twitter">
-            <i className="fab fa-twitter-square"></i>
+            <i class="fab fa-twitter-square"></i>
           </div>
         </div>
       </div>

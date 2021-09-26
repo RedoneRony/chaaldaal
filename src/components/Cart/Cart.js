@@ -27,7 +27,7 @@ function Cart(props) {
         ))}
       </ul>
 
-      <button type="button" className="btn btn-primary">
+      <button type="button" class="btn btn-primary">
         Buy Now
       </button>
     </div>
