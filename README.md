@@ -1,4 +1,4 @@
-It is mainly a programmer club website. Technology used: React, Bootstrap, React Router
+It is mainly a programmer club website. Technology used: React, Bootstrap, fontawesome.
 
 1.pass data using props.
 
