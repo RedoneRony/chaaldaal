@@ -1,8 +1,0 @@
-.card {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 20px;
-}
-.container {
-  margin-bottom: 30px;
-}

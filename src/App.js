@@ -1,14 +1,14 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
-import Club from "./components/Club/Club";
+import Users from "./components/Users/Users";
 
 function App() {
   return (
     <div className="App">
-      {/* call header and club component */}
+      {/* call header and Users component */}
       <Header></Header>
-      <Club></Club>
+      <Users></Users>
     </div>
   );
 }

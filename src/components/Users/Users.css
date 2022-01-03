@@ -1,0 +1,20 @@
+.card {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  padding-bottom: 20px !important;
+  position: relative;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  border: none !important;
+}
+
+.container {
+  margin-bottom: 30px;
+}
+
+.filter-search {
+  padding-left: 30px !important;
+  float: right !important;
+  padding-bottom: 500px !important;
+}
