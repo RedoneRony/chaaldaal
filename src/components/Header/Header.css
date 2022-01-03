@@ -1,7 +1,5 @@
 /* header component style  */
 .header {
-  text-align: center;
-  color: blue;
-  background-color: whitesmoke;
-  margin: 20px;
+  background-color: #039ea6;
+  height: 80px;
 }
