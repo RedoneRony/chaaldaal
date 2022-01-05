@@ -9,7 +9,7 @@ import { faSearch, faSlidersH } from "@fortawesome/free-solid-svg-icons";
 function Users() {
   // declare user state
   const [users, setUsers] = useState([]);
-  const [userlist, setUserlist] = useState([]);
+  const [userlist, setUserlist] = useState("");
   console.log(userlist);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -119,7 +119,7 @@ function Users() {
       <div className="row">
         {/* programmer data */}
         <div className="card">
-          {userlist.length === 20 || userlist === [] || userlist.length === 0
+          {userlist.length === 20 || userlist === ""
             ? users?.map((user, id) => <User key={id} user={user}></User>)
             : userlist.map((user, id) => (
                 <FilteredUser key={id} user={user}></FilteredUser>
