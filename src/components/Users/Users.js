@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import User from "../User/User";
+import FilteredUser from "../FilteredUser/FilteredUser";
 import "./Users.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Row, Col, Button, Table, Form, Container } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { faSearch, faSlidersH } from "@fortawesome/free-solid-svg-icons";
 function Users() {
   // declare user state
   const [users, setUsers] = useState([]);
-  console.log(users);
+  const [userlist, setUserlist] = useState([]);
+  console.log(userlist);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,6 +40,19 @@ function Users() {
       fetch("/data/38639.json").then((res) => res.json()),
     ]).then((data) => setUsers(...users, data));
   }, [!users]);
+
+  const HandleNameSearch = (e) => {
+    const profile = users.map((user) => {
+      const profileName = user.profile.name.toLowerCase();
+      if (profileName.search(e.target.value.toLowerCase()) !== -1) {
+        return user;
+      } else {
+        return "";
+      }
+    });
+    const result = profile.filter((user) => user !== "");
+    setUserlist(result);
+  };
 
   return (
     <div className="container">
@@ -98,14 +113,17 @@ function Users() {
           type="text"
           className="form-control md-10 lg-10 sm-11"
           placeholder="Search by name"
+          onChange={HandleNameSearch}
         ></input>
       </div>
       <div className="row">
         {/* programmer data */}
         <div className="card">
-          {users?.map((user, id) => (
-            <User key={id} user={user}></User>
-          ))}
+          {userlist.length === 20 || userlist === [] || userlist.length === 0
+            ? users?.map((user, id) => <User key={id} user={user}></User>)
+            : userlist.map((user, id) => (
+                <FilteredUser key={id} user={user}></FilteredUser>
+              ))}
         </div>
       </div>
     </div>
