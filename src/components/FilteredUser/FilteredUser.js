@@ -6,7 +6,6 @@ function FilteredUser(props) {
   const { name, pictureUrl } = props.user.profile;
   const dayDetails = props.user.calendar.daysWithDetails;
   const Userid = dayDetails[Object.keys(dayDetails)[0]].day.userId;
-  console.log(props);
 
   return (
     <div className="user">

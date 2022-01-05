@@ -3,14 +3,14 @@ import User from "../User/User";
 import FilteredUser from "../FilteredUser/FilteredUser";
 import "./Users.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { faSearch, faSlidersH } from "@fortawesome/free-solid-svg-icons";
 function Users() {
   // declare user state
   const [users, setUsers] = useState([]);
   const [userlist, setUserlist] = useState("");
-  console.log(userlist);
+  console.log(users);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -68,37 +68,98 @@ function Users() {
           <FontAwesomeIcon icon={faSlidersH} />
         </Button>
         <Modal show={show} onHide={handleClose} size="sm" className="category">
-          <Form className="subCategory">
-            <Modal.Header closeButton>
-              <Modal.Title>Update Value</Modal.Title>
-            </Modal.Header>
+          <Form>
+            <Modal.Header className="modal-header" closeButton></Modal.Header>
             <Modal.Body>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Control type="text" />
-              </Form.Group>
+              <br />
+              <h4 style={{ textAlign: "center" }}> User Analyzer</h4>
+              <p style={{ textAlign: "center" }}>
+                Select filters to generate report
+              </p>
+
+              <div className="edit-form">
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
+                  <h6>Date</h6>
+                  <hr />
+                  <Form.Group>
+                    <Row>
+                      <Col md="2" lg="2" sm="2">
+                        1 of 1
+                      </Col>
+                      <Col md="6" lg="6" sm="6">
+                        2 of 2
+                      </Col>
+                    </Row>
+                  </Form.Group>
+                  <div>
+                    From <Form.Control type="date" />
+                  </div>
+                  <br />
+                  To <Form.Control type="date" />
+                  <br />
+                  <p>Status</p>
+                  <hr />
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="active"
+                    />
+                    <label class="form-check-label" for="inlineRadio1">
+                      Active
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="super activate"
+                    />
+                    <label class="form-check-label" for="inlineRadio1">
+                      Super Active
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="bored"
+                    />
+                    <label class="form-check-label" for="inlineRadio1">
+                      Bored
+                    </label>
+                  </div>
+                </Form.Group>
+                <br />
+                <Form.Group>
+                  <div class="col-md-12 text-center">
+                    <Button
+                      onClick={handleClose}
+                      size="sm"
+                      className="button-modal"
+                      type="submit"
+                    >
+                      Generate
+                    </Button>
+                  </div>
+                </Form.Group>
+              </div>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose} size="sm">
-                Close
-              </Button>
-              <Button
-                variant="primary"
-                onClick={handleClose}
-                size="sm"
-                type="submit"
-              >
-                Save Changes
-              </Button>
-            </Modal.Footer>
           </Form>
         </Modal>
       </div>
       <br />
       <br />
-      {/* <div className="container"> */}
+
       <div className="input-group mb-3 w-50 mx-auto md-2 lg-2 sm-1 ">
         <button
           onclick="searchBook()"
@@ -117,7 +178,7 @@ function Users() {
         ></input>
       </div>
       <div className="row">
-        {/* programmer data */}
+        {/* user data */}
         <div className="card">
           {userlist.length === 20 || userlist === ""
             ? users?.map((user, id) => <User key={id} user={user}></User>)

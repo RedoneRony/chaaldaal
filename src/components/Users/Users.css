@@ -18,3 +18,15 @@
   float: right !important;
   padding-right: 50px !important;
 }
+.edit-form {
+  border: 1px solid black;
+  margin: 0px;
+  padding: 15px;
+}
+.modal-header {
+  background-color: #039ea6;
+}
+.button-modal {
+  background-color: #039ea6 !important;
+  border-color: #039ea6 !important;
+}
