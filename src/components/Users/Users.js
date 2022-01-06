@@ -13,22 +13,31 @@ function Users() {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [status, setStatus] = useState("");
-
-  console.log(fromDate);
-  console.log(toDate);
-  console.log(status);
-
   console.log(userlist);
-  console.log(users);
-
+  // get calender value from user
   const userCalendar = users.map((user) => {
     return user.calendar;
   });
-  console.log(userCalendar);
-  const dayDate = userCalendar.map((day) => {
-    return day.dateToDayId;
+  // day details with id
+  const dayDetail = userCalendar.map((day) => {
+    // eslint-disable-next-line no-sequences
+    return { ...day.dateToDayId, ...day.mealIdToDayId };
+    // return day.dateToDayId;
   });
-  console.log(dayDate);
+  console.log(dayDetail);
+  // const dayId = dayDetail.map((dayid) => {
+  //   return Object.values(dayid);
+  // });
+  // console.log(dayId);
+  // const daymealdetail = userCalendar.map((daymail) => {
+  //   return daymail.mealIdToDayId;
+  // });
+
+  // const daymealdetailid = daymealdetail.map((mailid) => {
+  //   return Object.values(mailid);
+  // });
+
+  // console.log(daymealdetailid);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
