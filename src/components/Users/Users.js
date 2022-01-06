@@ -10,7 +10,26 @@ function Users() {
   // declare user state
   const [users, setUsers] = useState([]);
   const [userlist, setUserlist] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [status, setStatus] = useState("");
+
+  console.log(fromDate);
+  console.log(toDate);
+  console.log(status);
+
+  console.log(userlist);
   console.log(users);
+
+  const userCalendar = users.map((user) => {
+    return user.calendar;
+  });
+  console.log(userCalendar);
+  const dayDate = userCalendar.map((day) => {
+    return day.dateToDayId;
+  });
+  console.log(dayDate);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -53,7 +72,15 @@ function Users() {
     const result = profile.filter((user) => user !== "");
     setUserlist(result);
   };
-
+  const handleFromDate = (e) => {
+    setFromDate(e.target.value);
+  };
+  const handleToDate = (e) => {
+    setToDate(e.target.value);
+  };
+  const handleStatus = (e) => {
+    setStatus(e.target.value);
+  };
   return (
     <div className="container">
       <div className="filter-search">
@@ -85,20 +112,30 @@ function Users() {
                   <h6>Date</h6>
                   <hr />
                   <Form.Group>
-                    <Row>
-                      <Col md="2" lg="2" sm="2">
-                        1 of 1
-                      </Col>
-                      <Col md="6" lg="6" sm="6">
-                        2 of 2
-                      </Col>
-                    </Row>
+                    <Container>
+                      <Row>
+                        <Col lg="2" md="2" sm="6" className="from-style">
+                          From
+                        </Col>
+                        <Col lg="10" md="10" sm="6">
+                          <Form.Control type="date" onChange={handleFromDate} />
+                        </Col>
+                      </Row>
+                    </Container>
                   </Form.Group>
-                  <div>
-                    From <Form.Control type="date" />
-                  </div>
-                  <br />
-                  To <Form.Control type="date" />
+                  <Form.Group>
+                    <Container>
+                      <Row>
+                        <Col lg={2} md={2} sm={2} className="form-style">
+                          To
+                        </Col>
+                        <Col lg={10} md={10} sm={10}>
+                          <Form.Control type="date" onChange={handleToDate} />
+                        </Col>
+                      </Row>
+                    </Container>
+                  </Form.Group>
+
                   <br />
                   <p>Status</p>
                   <hr />
@@ -109,6 +146,7 @@ function Users() {
                       name="inlineRadioOptions"
                       id="inlineRadio1"
                       value="active"
+                      onClick={handleStatus}
                     />
                     <label class="form-check-label" for="inlineRadio1">
                       Active
@@ -121,6 +159,7 @@ function Users() {
                       name="inlineRadioOptions"
                       id="inlineRadio1"
                       value="super activate"
+                      onClick={handleStatus}
                     />
                     <label class="form-check-label" for="inlineRadio1">
                       Super Active
@@ -133,6 +172,7 @@ function Users() {
                       name="inlineRadioOptions"
                       id="inlineRadio1"
                       value="bored"
+                      onClick={handleStatus}
                     />
                     <label class="form-check-label" for="inlineRadio1">
                       Bored
